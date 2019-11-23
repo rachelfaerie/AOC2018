@@ -23,6 +23,32 @@ def part_one():
 def hamming_distance(s1, s2):
     if len(s1) != len(s2):
         raise ValueError("Undefined for sequences of unequal length")
+    return sum(el1 != el2 for el1, el2 in zip(s1, s2))
+
+
+# noinspection PyShadowingNames
+def find_strings_of_distance_one(lines):
+    for i in range(len(lines)):
+        for j in range(i+1, len(lines)):
+            line1 = lines[i].strip()
+            line2 = lines[j].strip()
+            if hamming_distance(line1, line2) == 1:
+                return line1, line2
+    return None
+
+
+def part_two():
+    line1, line2 = find_strings_of_distance_one(lines)
+
+    # Make a new string with all common characters of line 1 and line 2
+    line3 = ""
+
+    for i in range(len(line1)):
+        if line1[i] == line2[i]:
+            line3 += line1[i]
+
+    print(line3)
 
 
 part_one()
+part_two()
