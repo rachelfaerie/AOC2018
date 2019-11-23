@@ -3,8 +3,8 @@
 
 input_file = open("day1.txt", "r")
 
-frequency: int = 0
+frequency_1: int = 0
 
-for line in input_file.readlines():
-    frequency += int(line.strip())
-print(frequency)
+for line_1 in input_file.readlines():
+    frequency_1 += int(line_1.strip())
+print("The frequency is " + str(frequency_1))
